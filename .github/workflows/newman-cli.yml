@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Newman CLI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  newman:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    - name: Newman CLI (Postman) Action
+      uses: anthonyvscode/newman-action@v1
+      with:
+        # Postman API key
+        collection: https://www.getpostman.com/collections/f4b361422e6c6d68c96d
+    
+    - name: Output summary to console
+      run: echo ${{ steps.run-api-tests.outputs.summary }}
