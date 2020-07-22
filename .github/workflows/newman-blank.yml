@@ -1,41 +1,17 @@
-# This is a basic workflow to help you get started with Actions
+name: Newman Run
 
-name: CI
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches:
+    - master
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  newman:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
-
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
-        
-    # run newman
-    - name: Newman Action
-      uses: matt-ball/newman-action@0.0.28
-      with:
-        # Postman API key
-        collection: https://www.getpostman.com/collections/f4b361422e6c6d68c96d
-        #environment: https://example.com/postman/environment.json
+      - uses: actions/checkout@master
+      - uses: matt-ball/newman-action@master
+        with:
+          #postmanApiKey: ${{ secrets.postmanApiKey }}
+          collection: https://www.getpostman.com/collections/f4b361422e6c6d68c96d
+          #environment: 5922408-228c7edd-fc15-4f68-9665-a35d7df6945b
