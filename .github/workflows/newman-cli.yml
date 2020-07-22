@@ -27,6 +27,9 @@ jobs:
       with:
         # Postman API key
         collection: https://www.getpostman.com/collections/f4b361422e6c6d68c96d
+        reporter: cli
+        insecure: true
+        suppressExitCode: false
     
     - name: Output summary to console
       run: echo ${{ steps.run-api-tests.outputs.summary }}
