@@ -31,3 +31,6 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+        
+    - name: run newman
+      run: npx newman run https://www.getpostman.com/collections/f4b361422e6c6d68c96d
