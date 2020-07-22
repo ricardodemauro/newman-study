@@ -27,7 +27,7 @@ jobs:
       with:
         # Postman API key
         collection: https://www.getpostman.com/collections/f4b361422e6c6d68c96d
-        reporter: cli
+        reporters: cli
         insecure: true
         suppressExitCode: false
     
